@@ -20,3 +20,8 @@ set hydro_color_prompt yellow
 set hydro_color_pwd	blue
 set hydro_color_git	red
 set hydro_fetch true
+
+# fzf
+set fzf_preview_dir_cmd exa --all --color=always
+set fzf_preview_file_cmd bat -n
+set fzf_fd_opts --hidden --exclude=.git
