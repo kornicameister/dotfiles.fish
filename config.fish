@@ -11,3 +11,6 @@ alias vim   'nvim'
 alias view  'nvim -R'
 set -x EDITOR nvim
 set -x VISUAL $EDITOR
+
+# path mods
+set -x PATH $HOME/.local/bin $PATH
