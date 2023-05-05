@@ -1,4 +1,6 @@
 conf.d/
 functions/
+!functions/update
 completions/
+themes/
 fish_variables
