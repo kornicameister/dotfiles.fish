@@ -19,7 +19,7 @@ set -x PATH $HOME/.local/bin $PATH
 set hydro_color_prompt yellow
 set hydro_color_pwd	blue
 set hydro_color_git	red
-set hydro_fetch true
+set hydro_fetch false                     # setting to true causes problem with agent
 
 # fzf
 set fzf_preview_dir_cmd exa --all --color=always
