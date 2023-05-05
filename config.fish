@@ -14,3 +14,9 @@ set -x VISUAL $EDITOR
 
 # path mods
 set -x PATH $HOME/.local/bin $PATH
+
+# prompt (hydro)
+set hydro_color_prompt yellow
+set hydro_color_pwd	blue
+set hydro_color_git	red
+set hydro_fetch true
