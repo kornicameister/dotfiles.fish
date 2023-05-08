@@ -1,9 +1,13 @@
 # theme
 fish_config theme choose "Dracula Official"
 
+# GPG
+export GPG_TTY=$(tty)
+
 # homebrew
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_NO_ENV_HINTS 1
+status --is-interactive ; and brew shellenv | source
 
 # Python variables
 set -x PYTHONIOENCODING         'UTF-8'     #  make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
@@ -47,16 +51,28 @@ test ! -e ~/.config/fish/functions/awsume.fish && awsume-configure --shell fish
 abbr -a -g ay awsume
 
 # all *env
-if status --is-interactive
-  type -q brew; and brew shellenv | source
-  type -q rbenv; and source (rbenv init -|psub)
-  type -q nodenv; and source (nodenv init -|psub)
-  type -q goenv; and source (goenv init -|psub)
-  type -q pyenv; and source (pyenv init - --path --no-rehash fish |psub)
-  type -q direnv; and direnv hook fish | source
+set -x PYENV_ROOT	"$HOME/.pyenv"
+set -x PATH 		"$PYENV_ROOT/bin" $PATH
+status --is-interactive; and . (pyenv init -|psub)
+status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
-  export GPG_TTY=$(tty)
-end
+set -x GOENV_ROOT   "$HOME/.goenv"
+set -x PATH         "$GOENV_ROOT/bin" $PATH
+status --is-interactive; and . (goenv init -|psub)
+
+set -x NODENV_ROOT  "$HOME/.nodenv"
+set -x PATH         "$NODENV_ROOT/bin" $PATH
+status --is-interactive; and . (nodenv init -|psub)
+
+set -x JENV_ROOT    "$HOME/.jenv"
+set -x PATH         "$JENV_ROOT/bin" $PATH
+status --is-interactive; and . (jenv init -|psub)
+
+set -x RBENV_ROOT   "$HOME/.rbenv"
+set -x PATH         "$RBENV_ROOT/bin" $PATH
+status --is-interactive; and . (rbenv init -|psub)
+
+status --is-interactive; and direnv hook fish | source
 
 # iterm2
 test ! -e {$HOME}/.iterm2_shell_integration.fish && curl -L https://iterm2.com/shell_integration/fish -o ~/.iterm2_shell_integration.fish
