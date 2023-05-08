@@ -54,6 +54,8 @@ if status --is-interactive
   type -q goenv; and source (goenv init -|psub)
   type -q pyenv; and source (pyenv init - --path --no-rehash fish |psub)
   type -q direnv; and direnv hook fish | source
+
+  export GPG_TTY=$(tty)
 end
 
 # iterm2
