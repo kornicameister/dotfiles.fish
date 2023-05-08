@@ -61,7 +61,7 @@ test ! -e {$HOME}/.iterm2_shell_integration.fish && curl -L https://iterm2.com/s
 source ~/.iterm2_shell_integration.fish
 
 # prompt
-starship init fish | source
+set pure_show_system_time true
 
 # abbrevations, aliases and other mental shortcuts
 abbr -a -g e 'nvim'
