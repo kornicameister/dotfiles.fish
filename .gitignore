@@ -4,3 +4,4 @@ functions/
 completions/
 themes/
 fish_variables
+*.tmp*
