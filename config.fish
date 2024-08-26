@@ -1,5 +1,5 @@
 # theme
-fish_config theme choose "Dracula Official"
+fish_config theme choose "Lava"
 
 # GPG
 export GPG_TTY=$(tty)
@@ -42,7 +42,7 @@ fzf_configure_bindings \
 
 set fzf_directory_opts    --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set fzf_history_opts      --no-sort
-set fzf_preview_dir_cmd   exa --icons --all --color=always
+set fzf_preview_dir_cmd   eza --icons --all --color=always
 set fzf_preview_file_cmd  preview
 set fzf_fd_opts           --hidden --exclude=.git
 
@@ -81,7 +81,7 @@ source ~/.iterm2_shell_integration.fish
 # prompt
 set pure_show_system_time true
 
-# abbrevations, aliases and other mental shortcuts
+# abbreviations, aliases and other mental shortcuts
 abbr -a -g e 'nvim'
 abbr -a -g g git
 abbr -a -g o xdg-open
@@ -91,11 +91,11 @@ alias vi      'nvim'
 alias vim     'nvim'
 alias view    'nvim -R'
 alias ping    'prettyping --nolegend'
-alias l       'exa -F --sort changed --icons -la --git --git-ignore'
-alias ls      'exa -F --icons'
-alias la      'exa -F --group-directories-first --icons -la'
-alias ll      'exa -F --group-directories-first --icons -la --color-scale --time-style long-iso --git --git-ignore'
-alias tree    'exa -F --group-directories-first -T --icons --level 2'
+alias l       'eza -F --sort changed --icons -la --git --git-ignore'
+alias ls      'eza -F --icons'
+alias la      'eza -F --group-directories-first --icons -la'
+alias ll      'eza -F --group-directories-first --icons -la --color-scale --time-style long-iso --git --git-ignore'
+alias tree    'eza -F --group-directories-first -T --icons --level 2'
 alias awsume  'source (which awsume.fish)'
 
 abbr -a -g ga      'git amend'
