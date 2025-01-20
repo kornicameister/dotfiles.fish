@@ -16,6 +16,9 @@ set -x PYTHONDONTWRITEBYTECODE  1           # prevent Python from making .pyc fi
 
 # Docker
 set -x DOCKER_BUILDKIT          1
+if type -q podman
+  alias docker podman
+end
 
 # Prefer US English and use UTF-8.
 set -x LANG   'en_US.UTF-8';
@@ -51,32 +54,31 @@ test ! -e ~/.config/fish/functions/awsume.fish && awsume-configure --shell fish
 abbr -a -g ay awsume
 
 # all *env
-set -x PYENV_ROOT	"$HOME/.pyenv"
-set -x PATH 		"$PYENV_ROOT/bin" $PATH
+set -Ux PYENV_ROOT  $HOME/.pyenv
+fish_add_path       $PYENV_ROOT/bin
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
-set -x GOENV_ROOT   "$HOME/.goenv"
-set -x PATH         "$GOENV_ROOT/bin" $PATH
+set -Ux GOENV_ROOT  "$HOME/.goenv"
+fish_add_path       $GOENV_ROOT/bin
 status --is-interactive; and . (goenv init -|psub)
 
-set -x NODENV_ROOT  "$HOME/.nodenv"
-set -x PATH         "$NODENV_ROOT/bin" $PATH
-status --is-interactive; and . (nodenv init -|psub)
-
-set -x JENV_ROOT    "$HOME/.jenv"
-set -x PATH         "$JENV_ROOT/bin" $PATH
+set -Ux JENV_ROOT    "$HOME/.jenv"
+fish_add_path        "$JENV_ROOT/bin"
 status --is-interactive; and . (jenv init -|psub)
 
-set -x RBENV_ROOT   "$HOME/.rbenv"
-set -x PATH         "$RBENV_ROOT/bin" $PATH
+set -Ux RBENV_ROOT   "$HOME/.rbenv"
+fish_add_path        $RBENV_ROOT/bin
 status --is-interactive; and . (rbenv init -|psub)
 
 status --is-interactive; and direnv hook fish | source
+status --is-interactive; and . "$(brew --prefix asdf)/libexec/asdf.fish"
 
 # iterm2
-test ! -e {$HOME}/.iterm2_shell_integration.fish && curl -L https://iterm2.com/shell_integration/fish -o ~/.iterm2_shell_integration.fish
-source ~/.iterm2_shell_integration.fish
+if $TERM_PROGRAM = "iTerm.app"
+  test ! -e {$HOME}/.iterm2_shell_integration.fish && curl -L https://iterm2.com/shell_integration/fish -o ~/.iterm2_shell_integration.fish
+  source ~/.iterm2_shell_integration.fish
+end
 
 # prompt
 set pure_show_system_time true
