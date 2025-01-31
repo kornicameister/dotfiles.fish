@@ -63,10 +63,6 @@ set -Ux GOENV_ROOT  "$HOME/.goenv"
 fish_add_path       $GOENV_ROOT/bin
 status --is-interactive; and . (goenv init -|psub)
 
-set -Ux JENV_ROOT    "$HOME/.jenv"
-fish_add_path        "$JENV_ROOT/bin"
-status --is-interactive; and . (jenv init -|psub)
-
 set -Ux RBENV_ROOT   "$HOME/.rbenv"
 fish_add_path        $RBENV_ROOT/bin
 status --is-interactive; and . (rbenv init -|psub)
