@@ -59,10 +59,6 @@ fish_add_path       $PYENV_ROOT/bin
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
-set -Ux GOENV_ROOT  "$HOME/.goenv"
-fish_add_path       $GOENV_ROOT/bin
-status --is-interactive; and . (goenv init -|psub)
-
 set -Ux RBENV_ROOT   "$HOME/.rbenv"
 fish_add_path        $RBENV_ROOT/bin
 status --is-interactive; and . (rbenv init -|psub)
