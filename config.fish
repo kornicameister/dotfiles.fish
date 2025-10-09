@@ -1,5 +1,5 @@
 # theme
-fish_config theme choose "Lava"
+fish_config theme choose "Dracula Official"
 
 # GPG
 export GPG_TTY=$(tty)
@@ -16,9 +16,9 @@ set -x PYTHONDONTWRITEBYTECODE  1           # prevent Python from making .pyc fi
 
 # Docker
 set -x DOCKER_BUILDKIT          1
-if type -q podman
-  alias docker podman
-end
+
+# docker-compose
+set -gx COMPOSE_BAKE             true
 
 # Prefer US English and use UTF-8.
 set -x LANG   'en_US.UTF-8';
@@ -29,7 +29,7 @@ set -x EDITOR nvim
 set -x VISUAL $EDITOR
 
 # path mods
-set -x PATH $HOME/.local/bin $PATH
+fish_add_path $HOME/.local/bin
 
 # z, j
 zoxide init fish --cmd j --hook pwd | source
@@ -68,14 +68,7 @@ fish_add_path        $RBENV_ROOT/bin
 status --is-interactive; and . (rbenv init -|psub)
 
 status --is-interactive; and direnv hook fish | source
-status --is-interactive; and . "$(brew --prefix asdf)/libexec/asdf.fish"
-
-# iterm2
-if $TERM_PROGRAM = "iTerm.app"
-  test ! -e {$HOME}/.iterm2_shell_integration.fish && curl -L https://iterm2.com/shell_integration/fish -o ~/.iterm2_shell_integration.fish
-  source ~/.iterm2_shell_integration.fish
-end
-
+status --is-interactive; and . "$(brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish"
 # prompt
 set pure_show_system_time true
 
