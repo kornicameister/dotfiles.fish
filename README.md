@@ -6,7 +6,7 @@ kornicameister's 🐟 shell configuration.
 
 This configuration is primarily used in my own [dotfiles](https://github.com/kornicameister/dotfiles).
 I have extracted it from there to avoid mixing shell configuration and system packages.
-That was, I believe, one of the mistakes I have made when configuring **zsh**.
+That was, I believe, one of the mistakes I have made when configuring **fish**.
 
 ## How to use
 
