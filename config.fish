@@ -65,6 +65,9 @@ status --is-interactive; and . (rbenv init -|psub)
 
 status --is-interactive; and direnv hook fish | source
 status --is-interactive; and . "$(brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish"
+
+# Ensure asdf shims take precedence over system binaries
+fish_add_path --prepend --move $HOME/.asdf/shims
 # prompt
 set pure_show_system_time true
 

@@ -5,3 +5,4 @@ completions/
 themes/
 fish_variables
 *.tmp*
+fish_variables.*
