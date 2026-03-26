@@ -53,16 +53,7 @@ set fzf_fd_opts           --hidden --exclude=.git
 test ! -e ~/.config/fish/functions/awsume.fish && awsume-configure --shell fish
 abbr -a -g ay awsume
 
-# all *env
-set -Ux PYENV_ROOT  $HOME/.pyenv
-fish_add_path       $PYENV_ROOT/bin
-status --is-interactive; and . (pyenv init -|psub)
-status --is-interactive; and . (pyenv virtualenv-init -|psub)
-
-set -Ux RBENV_ROOT   "$HOME/.rbenv"
-fish_add_path        $RBENV_ROOT/bin
-status --is-interactive; and . (rbenv init -|psub)
-
+# direnv & asdf
 status --is-interactive; and direnv hook fish | source
 status --is-interactive; and . "$(brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish"
 
