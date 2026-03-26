@@ -3,6 +3,5 @@ functions/
 !functions/update
 completions/
 themes/
-fish_variables
 *.tmp*
-fish_variables.*
+fish_variables*
